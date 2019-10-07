@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dist\\js",
+    "\\lib",
+    "\\lib\\jasmine_examples",
+    "\\spec",
+    "\\spec\\jasmine_examples",
+    "\\spec\\support",
+    "\\src",
+    "\\src\\css",
+    "\\src\\js"
+  ],
+  "SelectedNode": "\\src\\js\\rockPaperScissors.js",
+  "PreviewInSolutionExplorer": false
+}

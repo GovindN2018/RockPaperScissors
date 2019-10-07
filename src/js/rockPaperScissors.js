@@ -1,12 +1,13 @@
 var userChoice = "";
-var drawCount = 0;
+var computerChoice = "";
+var tieCount = 0;
 var computerWinCount = 0;
 var playerWinCount = 0;
 
 // Compare user choice vs computer choice
-var compare = function (choice1, choice2) {
+ function compare (choice1, choice2) {
     if (choice1 === choice2) {
-        return "It's a tie!";
+        return "Its a tie!";
     }
     if (choice1 === "rock") {
         if (choice2 === "scissors") {
@@ -14,7 +15,7 @@ var compare = function (choice1, choice2) {
             return "You win!";
         } else {
             // paper wins
-            return "You lose! Try again.";
+            return "You lose! Try again";
         }
     }
     if (choice1 === "paper") {
@@ -23,13 +24,13 @@ var compare = function (choice1, choice2) {
             return "You win!";
         } else {
             // scissors wins
-            return "You lose! Try again.";
+            return "You lose! Try again";
         }
     }
     if (choice1 === "scissors") {
         if (choice2 === "rock") {
             // rock wins
-            return "You lose! Try again.";
+            return "You lose! Try again";
         } else {
             // scissors wins
             return "You win!";
@@ -38,32 +39,40 @@ var compare = function (choice1, choice2) {
 };
 
 function getCount(result) {
-    if (result === "It's a tie!") {
-        drawCount++;
+    if (result === "Its a tie!") {
+        tieCount++;
     }
     if (result === "You win!") {
         playerWinCount++;
     }
-    if (result === "You lose! Try again.") {
+    if (result === "You lose! Try again") {
         computerWinCount++;
     }
-}
+};
 
 
+// User choice
 function getUserChoice(button) {
     userChoice = button.value;
+    var randomNum = Math.random();
+    getComputerChoice(randomNum);
+    checkResult();
+};
 
-    // Computer choice
-    var computerChoice = Math.random();
-    if (computerChoice < 0.34) {
+// Computer choice
+function getComputerChoice(randomNum) {
+    if (randomNum < 0.34) {
         computerChoice = "rock";
-    } else if (computerChoice <= 0.67) {
+    } else if (randomNum <= 0.67) {
         computerChoice = "paper";
     } else {
         computerChoice = "scissors";
     }
+    return computerChoice;
+};
 
-    // Run the compare function
+// Run the compare function
+function checkResult() {
     var results = compare(userChoice, computerChoice);
     getCount(results);
 
@@ -71,17 +80,32 @@ function getUserChoice(button) {
 
     document.getElementById('playerWins').innerHTML = '<strong>Your Victories: </strong> <span id="wins"> ' + playerWinCount + '</span>';
     document.getElementById('playerLosses').innerHTML = '<strong>Your defeats: </strong><span id="losses">' + computerWinCount + '</span>';
-    document.getElementById('playerDraws').innerHTML = '<strong>Total Draws:  </strong><span id="draws"> ' + drawCount + '</span>';
+    document.getElementById('playerDraws').innerHTML = '<strong>Total Draws:  </strong><span id="draws"> ' + tieCount + '</span>';
 };
 
 function resetScores() {
     playerWinCount = 0;
     computerWinCount = 0;
-    drawCount = 0;
+    tieCount = 0;
 
     document.getElementById('game-message').innerHTML = '<p class="game-draw"></p>' + '<p class="computer-message"></p>';
 
     document.getElementById('playerWins').innerHTML = '<strong>Your Victories: </strong> <span id="wins"> ' + playerWinCount + '</span>';
     document.getElementById('playerLosses').innerHTML = '<strong>Your defeats: </strong><span id="losses">' + computerWinCount + '</span>';
-    document.getElementById('playerDraws').innerHTML = '<strong>Total Draws:  </strong><span id="draws"> ' + drawCount + '</span>';
+    document.getElementById('playerDraws').innerHTML = '<strong>Total Draws:  </strong><span id="draws"> ' + tieCount + '</span>';
+};
+
+//function selectedButton(button) {
+//    alert("This button selected...");
+//    button.style.backgroundColor = "red";
+//    //button.toggleClass('buttonClassB');
+//};
+
+module.exports = {
+    compare: compare,
+    getUserChoice: getUserChoice,
+    getComputerChoice: getComputerChoice,
+    //results: results,
+    getCount: getCount,
+    resetScores: resetScores
 };

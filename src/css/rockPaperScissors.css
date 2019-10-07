@@ -41,6 +41,9 @@ h1 {
     box-shadow: 4px 4px 6px 0px rgba(168,168,168,1);
 }
 
+.buttonClassB {
+    background: red;
+}
 
 /*win, loss, draw message box placement*/
 

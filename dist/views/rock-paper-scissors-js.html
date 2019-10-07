@@ -15,9 +15,9 @@
         <h1>Just press a button to play!</h1>
 
         <div class="button-row">
-            <button id="rockbtn" value="rock" class="btn" onclick="getUserChoice(this)">Rock</button>
-            <button id="paperbtn" value="paper" class="btn" onclick="getUserChoice(this)">Paper</button>
-            <button id="scissorsbtn" value="scissors" class="btn" onclick="getUserChoice(this)">Scissors</button>
+            <button id="rockbtn" value="rock" class="btn" onclick="getUserChoice(this); selectedButton(this)">Rock</button>
+            <button id="paperbtn" value="paper" class="btn" onclick="getUserChoice(this); selectedButton(this)">Paper</button>
+            <button id="scissorsbtn" value="scissors" class="btn" onclick="getUserChoice(this); selectedButton(this)">Scissors</button>
         </div>
 
         <div class="game-message-placement">
